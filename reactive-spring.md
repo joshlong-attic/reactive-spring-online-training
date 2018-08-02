@@ -8,4 +8,7 @@
 * Server-Sent Events
 * Reactive API Gateways
 * Reactive Security
-* API Adapters and the Reactive `WebClient`
+* API Adapters  
+* the Reactive `WebClient`
+* circuit breakers
+* 

@@ -2,26 +2,25 @@ package com.example.tweetservice;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
 
 import static org.junit.Assert.*;
 
+/**
+	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
+	*/
 public class SyntheticServiceTest {
 
 		private final SyntheticService syntheticService = new SyntheticService();
 
 		@Test
-		public void generate() {
+		public void greetings() {
 				StepVerifier
-					.withVirtualTime(() -> this.syntheticService.generate().take(10).collectList())
+					.withVirtualTime(() -> this.syntheticService.greetings().take(10).collectList())
 					.thenAwait(Duration.ofSeconds(20))
-					.consumeNextWith(x -> Assert.assertEquals(10, x.size()))
+					.consumeNextWith(results -> Assert.assertEquals(results.size(), 10))
 					.verifyComplete();
 		}
 }
